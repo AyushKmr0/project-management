@@ -17,12 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(errorMiddleware);
-
 // routers import
 import authRouter from "./router/user.route.js";
 
 // routers declaration
 app.use("/api/v1/auth", authRouter);
 
+
+app.use(errorMiddleware);
 export { app };
