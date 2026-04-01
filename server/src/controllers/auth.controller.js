@@ -141,7 +141,7 @@ const resetPassword = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All fields are required.");
     }
 
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
         throw new ApiError(400, "Password and Confirm Password do not match.");
     }
 
@@ -149,7 +149,7 @@ const resetPassword = asyncHandler(async (req, res) => {
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
 
-    await user.save({ validateBeforeSave: false });
+    await user.save();
 
     generateToken(200, user, "Password reset successfully.", res);
 });

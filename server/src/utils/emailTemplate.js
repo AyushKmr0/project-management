@@ -59,7 +59,7 @@ export const generateForgotPasswordEmailTemplate = (resetPasswordURL) => `
                             </p>
                         </div>
                         <a
-                            href="${process.env.FRONTEND_URL}/reset-password/${resetPasswordURL}"
+                            href="${resetPasswordURL}"
                             style="
                                 display: inline-block;
                                 margin-top: 40px;
