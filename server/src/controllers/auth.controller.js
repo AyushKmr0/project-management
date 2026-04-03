@@ -38,19 +38,16 @@ const registerUser = asyncHandler(async (req, res) => {
 
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password, role } = req.body;
-    console.log("--- 1 ----");
 
     if (
         [email, password, role].some(
             (field) => typeof field !== "string" || field.trim() === ""
         )
     ) {
-        console.log("--- 1 ----");
         throw new ApiError(400, "All fields are required.");
     }
 
     const user = await User.findOne({ email, role }).select("+password");
-    console.log(user);
 
     if (!user) {
         throw new ApiError(401, "Invalid email, password or role.");

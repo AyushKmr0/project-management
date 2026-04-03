@@ -1,10 +1,6 @@
-import dotenv from "dotenv";
+import "dotenv/config";
 import { connectDB } from "./database/index.js";
 import { app } from "./app.js";
-
-dotenv.config({
-	path: "./.env",
-});
 
 // Handle sync errors
 process.on("uncaughtException", (error) => {

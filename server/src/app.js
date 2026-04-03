@@ -4,11 +4,12 @@ import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./utils/ApiError.js";
 
 const app = express();
+const frontendUri = process.env.FRONTEND_URI || "http://localhost:5173";
 
 app.use(
 	cors({
-		origin: [process.env.FRONTEND_URI],
-		methods: ["GET", "POST", "PUT", "DELETE"],
+		origin: frontendUri,
+		methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 		credentials: true,
 	}),
 );
